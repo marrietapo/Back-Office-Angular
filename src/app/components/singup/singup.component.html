@@ -1,0 +1,40 @@
+<form
+  nz-form
+  [formGroup]="registerForm"
+  class="signup-form"
+  (ngSubmit)="submitForm()"
+>
+  <nz-form-item>
+    <nz-form-control nzErrorTip="Ingrese su usuario">
+      <nz-input-group nzPrefixIcon="user">
+        <input
+          type="text"
+          nz-input
+          formControlName="usuario"
+          placeholder="Usuario"
+        />
+      </nz-input-group>
+    </nz-form-control>
+  </nz-form-item>
+  <nz-form-item>
+    <nz-form-control nzErrorTip="Ingrese su contraseña">
+      <nz-input-group nzPrefixIcon="lock">
+        <input
+          type="password"
+          nz-input
+          formControlName="password"
+          placeholder="Contraseña"
+        />
+      </nz-input-group>
+    </nz-form-control>
+  </nz-form-item>
+  <div nz-row class="signup-form-margin">
+  </div>
+  <button
+    nz-button
+    class="signup-form-button signup-form-margin"
+    [nzType]="'primary'"
+  >
+    Registrarme
+  </button>
+</form>

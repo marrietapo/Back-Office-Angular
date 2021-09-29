@@ -1,0 +1,22 @@
+<p>welcome works!</p>
+
+<div nz-row>
+  <div nz-col nzSpan="8"></div>
+  <div nz-col nzSpan="8">
+    <nz-tabset>
+      <nz-tab nzTitle="Loguearme">
+        <ng-template #titleTemplate>
+          <i nz-icon nzType='user'></i>
+        </ng-template>
+        <app-singin></app-singin>
+      </nz-tab>
+      <nz-tab nzTitle="Registrarme">
+        <ng-template #titleTemplate>
+          <i nz-icon nzType='apple'></i>
+        </ng-template>
+        <app-singup></app-singup>
+      </nz-tab>
+    </nz-tabset>
+  </div>
+  <div nz-col nzSpan="8"></div>
+</div>

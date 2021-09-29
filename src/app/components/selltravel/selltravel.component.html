@@ -1,0 +1,66 @@
+
+<div nz-row>
+  <div nz-col nzSpan="6"></div>
+  <div nz-col nzSpan="12">
+    <form
+    nz-form
+    [formGroup]="validateForm"
+    class="sell-form"
+    (ngSubmit)="submitForm()"
+    >
+    <h2>Vender viajes!</h2>
+      <nz-form-item>
+        <nz-form-control nzErrorTip="Ingrese el nombre del Comprador">
+          <nz-input-group nzPrefixIcon="user">
+            <input
+              type="text"
+              nz-input
+              formControlName="userName"
+              placeholder="Nombre de comprador"
+            />
+          </nz-input-group>
+        </nz-form-control>
+      </nz-form-item>
+      <nz-form-item >
+        <nz-form-control nzErrorTip="Seleccione el Paquete">
+          <button nz-button nz-dropdown [nzDropdownMenu]="menu" class="sell-form-button sell-form-margin">
+            Seleccionar Paquete de Viaje
+            <i nz-icon nzType="down"></i>
+          </button>
+          <nz-dropdown-menu #menu="nzDropdownMenu">
+            <ul nz-menu>
+              <li nz-menu-item>menu4 1st menu item</li>
+              <li nz-menu-item>menu4 2nd menu item</li>
+              <li nz-menu-item>menu4 3rd menu item</li>
+            </ul>
+          </nz-dropdown-menu>
+        </nz-form-control>
+      </nz-form-item>
+      <nz-form-item>
+      <div nz-row>
+        <div nz-col nzSpan="12"><label>Cantidad de adultos </label></div>
+        <div nz-col nzSpan="12">
+          <nz-input-number [(ngModel)]= value [nzMin]="1" [nzMax]="10" [nzStep]="1" [nzPlaceHolder]="'0'"></nz-input-number>
+        </div>
+      </div>
+    </nz-form-item>
+      <nz-form-item>
+    <div nz-row>
+        <div nz-col nzSpan="12"><label>Cantidad de niños </label></div>
+        <div nz-col nzSpan="12">
+          <nz-input-number [(ngModel)]= value [nzPlaceHolder]="'0'" [nzMin]="0" [nzMax]="10" [nzStep]="1" class="input-number"></nz-input-number>
+        </div>
+      </div>
+    </nz-form-item>
+      <div nz-row class="sell-form-margin"></div>
+      <button
+        nz-button
+        class="sell-form-button sell-form-margin"
+        [nzType]="'primary'"
+      >
+        Vender
+      </button>
+    </form>
+  </div>
+  <div nz-col nzSpan="6"></div>
+</div>
