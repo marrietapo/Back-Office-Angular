@@ -29,6 +29,7 @@ import { NzDropDownModule } from 'ng-zorro-antd/dropdown';
 import { NzInputNumberModule } from 'ng-zorro-antd/input-number';
 import { NzNotificationModule } from 'ng-zorro-antd/notification';
 import { NzListModule } from 'ng-zorro-antd/list';
+import { DashboardComponent } from './components/dashboard/dashboard.component';
 
 registerLocaleData(es);
 
@@ -40,6 +41,7 @@ registerLocaleData(es);
     WelcomeComponent,
     SelltravelComponent,
     TravellistComponent,
+    DashboardComponent,
   ],
   imports: [
     BrowserModule,
