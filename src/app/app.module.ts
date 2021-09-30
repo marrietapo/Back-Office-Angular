@@ -30,6 +30,11 @@ import { NzInputNumberModule } from 'ng-zorro-antd/input-number';
 import { NzNotificationModule } from 'ng-zorro-antd/notification';
 import { NzListModule } from 'ng-zorro-antd/list';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
+import { DestinationComponent } from './components/destination/destination.component';
+import { OfferComponent } from './components/offer/offer.component';
+import { StatisticsComponent } from './components/statistics/statistics.component';
+import { Page404Component } from './components/page404/page404.component';
+import { NzResultModule } from 'ng-zorro-antd/result';
 
 registerLocaleData(es);
 
@@ -42,6 +47,10 @@ registerLocaleData(es);
     SelltravelComponent,
     TravellistComponent,
     DashboardComponent,
+    DestinationComponent,
+    OfferComponent,
+    StatisticsComponent,
+    Page404Component,
   ],
   imports: [
     BrowserModule,
@@ -62,6 +71,7 @@ registerLocaleData(es);
     NzInputNumberModule,
     NzNotificationModule,
     NzListModule,
+    NzResultModule,
   ],
   providers: [{ provide: NZ_I18N, useValue: es_ES }],
   bootstrap: [AppComponent],

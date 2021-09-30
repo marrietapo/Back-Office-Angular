@@ -21,10 +21,6 @@ export class TravellistComponent implements OnInit {
 
     this.productService.getAllProducts().subscribe(
       (products) => {
-        this.notificationService.success(
-          'Usuario registrado correctamente',
-          ''
-        );
         this.productService.setProducts(products);
       },
       ({ error: { mensaje } }) => {
