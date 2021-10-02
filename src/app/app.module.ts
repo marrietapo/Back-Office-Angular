@@ -23,7 +23,7 @@ import { SinginComponent } from './components/singin/singin.component';
 import { SingupComponent } from './components/singup/singup.component';
 import { WelcomeComponent } from './components/welcome/welcome.component';
 import { NzToolTipModule } from 'ng-zorro-antd/tooltip';
-import { SelltravelComponent } from './components/selltravel/selltravel.component';
+import { TravelsalesComponent } from './components/travelsales/travelsales.component';
 import { TravellistComponent } from './components/travellist/travellist.component';
 import { NzDropDownModule } from 'ng-zorro-antd/dropdown';
 import { NzInputNumberModule } from 'ng-zorro-antd/input-number';
@@ -44,13 +44,13 @@ registerLocaleData(es);
     SinginComponent,
     SingupComponent,
     WelcomeComponent,
-    SelltravelComponent,
     TravellistComponent,
     DashboardComponent,
     DestinationComponent,
     OfferComponent,
     StatisticsComponent,
     Page404Component,
+    TravelsalesComponent,
   ],
   imports: [
     BrowserModule,

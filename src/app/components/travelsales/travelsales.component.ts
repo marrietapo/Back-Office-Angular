@@ -2,12 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
-  selector: 'app-selltravel',
-  templateUrl: './selltravel.component.html',
-  styleUrls: ['./selltravel.component.scss']
+  selector: 'app-travelsales',
+  templateUrl: './travelsales.component.html',
+  styleUrls: ['./travelsales.component.scss'],
 })
-export class SelltravelComponent implements OnInit {
-
+export class TravelsalesComponent implements OnInit {
   value: number = 0;
   validateForm!: FormGroup;
 
@@ -24,7 +23,7 @@ export class SelltravelComponent implements OnInit {
 
   ngOnInit(): void {
     this.validateForm = this.fb.group({
-      userName: [null, [Validators.required]]
+      userName: [null, [Validators.required]],
     });
   }
 }

@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { SelltravelComponent } from './components/selltravel/selltravel.component';
+import { TravelsalesComponent } from './components/travelsales/travelsales.component';
 import { TravellistComponent } from './components/travellist/travellist.component';
 import { WelcomeComponent } from './components/welcome/welcome.component';
 import { DestinationComponent } from './components/destination/destination.component';
@@ -10,7 +10,7 @@ import { Page404Component } from './components/page404/page404.component';
 
 const routes: Routes = [
   { path: '', component: WelcomeComponent, pathMatch: 'full' },
-  { path: 'venta', component: SelltravelComponent, pathMatch: 'full' },
+  { path: 'venta', component: TravelsalesComponent, pathMatch: 'full' },
   { path: 'paquetes', component: TravellistComponent, pathMatch: 'full' },
   { path: 'ventas', component: WelcomeComponent, pathMatch: 'full' },
   { path: 'destinos-top', component: DestinationComponent, pathMatch: 'full' },

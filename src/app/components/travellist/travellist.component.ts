@@ -19,7 +19,7 @@ export class TravellistComponent implements OnInit {
   ngOnInit(): void {
     console.log(this.userService.getApiKey());
 
-    this.productService.getAllProducts().subscribe(
+    this.productService.getAllProductsApi().subscribe(
       (products) => {
         this.productService.setProducts(products);
       },

@@ -16,13 +16,17 @@ export class ProductService {
     this.products = products;
   }
 
-  getAllProducts(){
+  getProducts(){
+    return this.products;
+  }
+
+  getAllProductsApi(){
     this.key = this.user.getApiKey().toString();
     const headers = {
       'Content-type': 'application/json',
       'apikey': this.key
     };
-    console.log(headers);
+
     return this.http.get('https://destinos.develotion.com/paquetes.php', {
       headers
     });
