@@ -39,14 +39,7 @@ export class TravelsalesComponent implements OnInit {
           this.notificationService.success('Venta efectuada correctamente', '');
 
           this.salesService.addSale(
-            new Sale(
-              1231,
-              this.userService.getUserId(),
-              this.validateForm.value,
-              this.selectedValue,
-              this.childValue,
-              this.adultValue
-            )
+            new Sale()
           );
           this.router.navigate(['/paquetes']);
         },
@@ -72,13 +65,6 @@ export class TravelsalesComponent implements OnInit {
 
     this.data = this.productService.getProducts();
 
-    this.productService.getAllProductsApi().subscribe(
-      (products) => {
-        this.productService.setProducts(products);
-      },
-      ({ error: { mensaje } }) => {
-        this.notificationService.error(mensaje, '');
-      }
-    );
+
   }
 }

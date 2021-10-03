@@ -2,8 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { ProductService } from 'src/app/services/product.service';
 import { SalesService } from 'src/app/services/sales.service';
 import { UserService } from 'src/app/services/user.service';
-import { SalesBySellerListComponent } from '../sales-by-seller-list/sales-by-seller-list.component';
-import { SalesBySellerQuantityComponent } from '../sales-by-seller-quantity/sales-by-seller-quantity.component';
+import { NzNotificationService } from 'ng-zorro-antd/notification';
+import { Product } from 'src/app/models/product';
+
 
 
 @Component({
@@ -13,17 +14,56 @@ import { SalesBySellerQuantityComponent } from '../sales-by-seller-quantity/sale
 })
 export class SalesBySellerComponent implements OnInit {
 
-  data :any;
+  salesData:any=null;
+  productData!:Product[];
+  travelsData : any=[];
+
+
+  quantity!: number;
 
   constructor(
     private productService: ProductService,
     private salesService: SalesService,
-    private userService: UserService
+    private userService: UserService,
+    private notificationService: NzNotificationService,
 
   ) { }
 
   ngOnInit(): void {
-    this.data = this.salesService.getSalesBySellerApi();
+
+    this.travelsData = [];
+    this.productData = this.productService.getProducts();
+    this.salesData = this.salesService.getSales();
+    this.quantity = this.salesData.length;
+    this.handleData();
+
+
   }
+
+
+  handleData(){
+
+    this.salesData.forEach((element: {id: number;id_paquete: number;nombre_cliente: string; cantidad_menores: number; cantidad_mayores: number; vendedor_id:number; }) => {
+      let paquete: Product[];
+      paquete = this.productService.getProductById(1);
+
+      let travel = {
+        id: element.id,
+        id_paquete: element.id_paquete,
+        nombre_paquete: paquete[0].nombre,
+        nombre_cliente: element.nombre_cliente,
+        cantidad_menores: element.cantidad_menores,
+        cantidad_mayores: element.cantidad_mayores,
+        vendedor_id: element.vendedor_id,
+        precio_menor: paquete[0].precio_menor,
+        precio_mayor: paquete[0].precio_mayor
+      };
+
+        this.travelsData = [...this.travelsData, travel];
+      }
+    );
+    console.log(this.travelsData);
+  }
+
 
 }

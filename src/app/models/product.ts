@@ -1,17 +1,26 @@
 export class Product {
+  id!: number;
+  nombre!: string;
+  foto!: string;
+  precio_mayor!: number;
+  precio_menor!: number;
 
-  constructor(
-    id: number,
-    nombre: string,
-    foto: string,
-    precio_mayor: number,
-    precio_menor: number,
-  ) {
-    id;
-    nombre;
-    foto;
-    precio_mayor;
-    precio_menor;
+  constructor() {}
 
+  getNombre() {
+    return this.nombre;
   }
+
+  getFoto() {
+    return this.foto;
+  }
+
+  getPrecioMenor(){
+    return this.precio_menor;
+  }
+
+  getPrecioMayor(){
+    return this.precio_mayor;
+  }
+
 }

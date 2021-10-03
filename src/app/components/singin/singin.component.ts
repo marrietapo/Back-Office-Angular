@@ -27,7 +27,7 @@ export class SinginComponent implements OnInit {
         this.userService.setUser(user);
         console.log(user);
         this.notificationService.success("Usuario logueado correctamente", "");
-        this.router.navigate(['/paquetes']);
+        this.router.navigate(['/dashboard']);
       },
       ({ error: { mensaje } }) => {
         this.notificationService.error(mensaje,'');

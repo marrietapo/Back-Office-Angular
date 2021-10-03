@@ -6,13 +6,14 @@ import { Component, OnInit, Input } from '@angular/core';
   styleUrls: ['./sales-by-seller-quantity.component.scss'],
 })
 export class SalesBySellerQuantityComponent implements OnInit {
-  @Input()
-  data:any;
-  quantity : any;
+  @Input() quantity! :number;
+
 
   constructor() {}
 
   ngOnInit(): void {
-    this.quantity = this.data.count();
+
   }
+
+
 }

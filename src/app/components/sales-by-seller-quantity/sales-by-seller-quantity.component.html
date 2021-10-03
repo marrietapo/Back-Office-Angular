@@ -1,8 +1,10 @@
 <div nz-row>
   <div nz-col nzSpan="4"></div>
   <div nz-col nzSpan="16">
-    <nz-statistic [nzValue]="quantity" [nzTitle]="'Paquetes vendidos'" [nzPrefix]="prefixTpl"></nz-statistic>
-    <ng-template #prefixTpl><i nz-icon nzType="like"></i></ng-template>
+    <nz-card>
+    <nz-statistic [nzValue]="quantity" [nzTitle]="'Paquetes vendidos'" [nzPrefix]="prefixTpl" [nzValueStyle]="{color: '#3F8600'}"></nz-statistic>
+    <ng-template #prefixTpl><i nz-icon nzType="arrow-up"></i></ng-template>
+  </nz-card>
   </div>
   <div nz-col nzSpan="4"></div>
 </div>

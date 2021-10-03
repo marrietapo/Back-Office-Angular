@@ -21,25 +21,8 @@ export class TravellistComponent implements OnInit {
 
   ngOnInit(): void {
 
+    this.data = this.productService.getProducts();
 
-    this.productService.getAllProductsApi().subscribe(
-      (products) => {
-        this.productService.setProducts(products);
-      },
-      ({ error: { mensaje } }) => {
-        this.notificationService.error(mensaje, '');
-      }
-    );
-
-    this.salesService.getSalesBySellerApi().subscribe(
-      (sales) => {
-        this.salesService.setSales(sales);
-      },
-      ({ error: { mensaje } }) => {}
-    );
-
-
-        this.data = this.productService.getProducts();
   }
 }
 
