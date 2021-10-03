@@ -1,1 +1,18 @@
-<p>offer works!</p>
+<div class="travel_list">
+  <h3>Destinos a Promocionar (sin ventas registradas)</h3>
+   <nz-list nzItemLayout="horizontal" >
+        <nz-list-item *ngFor="let item of travelsData">
+          <nz-list-item-meta
+            nzAvatar="user"
+          >
+            <nz-list-item-meta-title>
+              {{ item.nombre}}
+            </nz-list-item-meta-title>
+          </nz-list-item-meta>
+              <ul nz-list-item-actions>
+                <nz-list-item-action> --> {{item.quantity}}</nz-list-item-action>
+              </ul>
+        </nz-list-item>
+        <nz-list-empty *ngIf="travelsData.length === 0"></nz-list-empty>
+      </nz-list>
+</div>

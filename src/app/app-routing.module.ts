@@ -19,17 +19,8 @@ const routes: Routes = [
   { path: 'paquetes', component: TravellistComponent, pathMatch: 'full' },
   { path: 'ventas', component: SalesBySellerComponent, pathMatch: 'full' },
   { path: 'destinos-top', component: DestinationComponent, pathMatch: 'full' },
-  {
-    path: 'viajeros-destino',
-    component: TravellersByDestinationComponent,
-    pathMatch: 'full',
-  },
-
-  {
-    path: 'destinos-promocion',
-    component: OfferComponent,
-    pathMatch: 'full',
-  },
+  { path: 'viajeros-destino',component: TravellersByDestinationComponent, pathMatch: 'full'},
+  { path: 'destinos-promocion', component: OfferComponent, pathMatch: 'full' },
   { path: 'graficos', component: StatisticsComponent, pathMatch: 'full' },
   { path: '**', component: Page404Component, pathMatch: 'full' },
 ];

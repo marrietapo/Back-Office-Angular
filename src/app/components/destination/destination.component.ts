@@ -28,16 +28,17 @@ export class DestinationComponent implements OnInit {
 
   handleData() {
     this.productData.forEach((element) => {
-      let ventas = this.salesService.getSalesByProductId(element.id);
+      let ventas:Sale[] = this.salesService.getSalesByProductId(element.id);
+      if(ventas.length>=3){
 
+        let travel = {
+          id: element.id,
+          nombre: element.nombre,
+          quantity: ventas.length,
+        };
+        this.travelsData = [...this.travelsData, travel];
+      }
 
-      let travel = {
-        id: element.id,
-        nombre: element.nombre,
-        //quantity: quantity,
-      };
-
-      this.travelsData = [...this.travelsData, travel];
     });
   }
 }
