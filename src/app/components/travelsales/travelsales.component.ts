@@ -1,5 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import { NzNotificationService } from 'ng-zorro-antd/notification';
+import { Sale } from 'src/app/models/sale';
+import { ProductService } from 'src/app/services/product.service';
+import { SalesService } from 'src/app/services/sales.service';
+import { UserService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-travelsales',
@@ -7,8 +13,11 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
   styleUrls: ['./travelsales.component.scss'],
 })
 export class TravelsalesComponent implements OnInit {
-  value: number = 0;
+  childValue: number = 0;
+  adultValue: number = 1;
+  selectedValue: number = 0;
   validateForm!: FormGroup;
+  data: any;
 
   submitForm(): void {
     for (const i in this.validateForm.controls) {
@@ -17,13 +26,59 @@ export class TravelsalesComponent implements OnInit {
         this.validateForm.controls[i].updateValueAndValidity();
       }
     }
+    this.salesService
+      .addSaleApi(
+        this.validateForm.value,
+        this.selectedValue,
+        this.childValue,
+        this.adultValue
+      )
+      .subscribe(
+        (response) => {
+          console.log(response);
+          this.notificationService.success('Venta efectuada correctamente', '');
+
+          this.salesService.addSale(
+            new Sale(
+              1231,
+              this.userService.getUserId(),
+              this.validateForm.value,
+              this.selectedValue,
+              this.childValue,
+              this.adultValue
+            )
+          );
+          this.router.navigate(['/paquetes']);
+        },
+        ({ error: { mensaje } }) => {
+          this.notificationService.error(mensaje, '');
+        }
+      );
   }
 
-  constructor(private fb: FormBuilder) {}
+  constructor(
+    private fb: FormBuilder,
+    private productService: ProductService,
+    private salesService: SalesService,
+    private userService: UserService,
+    private notificationService: NzNotificationService,
+    private router: Router
+  ) {}
 
   ngOnInit(): void {
     this.validateForm = this.fb.group({
       userName: [null, [Validators.required]],
     });
+
+    this.data = this.productService.getProducts();
+
+    this.productService.getAllProductsApi().subscribe(
+      (products) => {
+        this.productService.setProducts(products);
+      },
+      ({ error: { mensaje } }) => {
+        this.notificationService.error(mensaje, '');
+      }
+    );
   }
 }

@@ -26,7 +26,7 @@ export class UserService {
     this.user = undefined;
   }
 
-  login(usuario: string, password: string) {
+  login = (usuario: string, password: string) =>{
     const headers = { 'Content-type': 'application/json' };
     const body = JSON.stringify({ usuario, password });
     return this.http.post('https://destinos.develotion.com/login.php', body, {
@@ -34,7 +34,7 @@ export class UserService {
     });
   }
 
-  register(usuario: string, password: string) {
+  register = (usuario: string, password: string) => {
     const headers = { 'Content-type': 'application/json' };
     const body = JSON.stringify({ usuario, password });
     return this.http.post('https://destinos.develotion.com/usuarios.php', body, {

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ProductService } from '../../services/product.service';
 import { UserService } from '../../services/user.service';
 import { NzNotificationService } from 'ng-zorro-antd/notification';
+import { SalesService } from 'src/app/services/sales.service';
 
 @Component({
   selector: 'app-travellist',
@@ -10,14 +11,16 @@ import { NzNotificationService } from 'ng-zorro-antd/notification';
 })
 export class TravellistComponent implements OnInit {
   data: any;
+
   constructor(
     private productService: ProductService,
+    private salesService: SalesService,
     private notificationService: NzNotificationService,
-    private userService : UserService
+    private userService: UserService
   ) {}
 
   ngOnInit(): void {
-    console.log(this.userService.getApiKey());
+
 
     this.productService.getAllProductsApi().subscribe(
       (products) => {
@@ -28,6 +31,15 @@ export class TravellistComponent implements OnInit {
       }
     );
 
+    this.salesService.getSalesBySellerApi().subscribe(
+      (sales) => {
+        this.salesService.setSales(sales);
+      },
+      ({ error: { mensaje } }) => {}
+    );
+
+
+        this.data = this.productService.getProducts();
   }
 }
 

@@ -14,39 +14,40 @@ export class SalesService {
   constructor(private http: HttpClient, private user: UserService) {}
 
 
-  addSale(sale: Sale) {
+  addSale = (sale: any)=> {
     this.sales = [...this.sales, sale];
   }
 
-  getSales() {
+  getSales= ()=> {
     return this.sales;
   }
 
-  setSales( sales: Sale[]) {
-    this.sales = sales;
+  setSales = ( sales: any)=> {
+    this.sales = sales.ventas;
   }
 
-  getSalesBySellerApi(sellerId: number) {
+  getSalesBySellerApi = () =>{
     this.key = this.user.getApiKey().toString();
+    this.sellerId = this.user.getUserId();
     const headers = {
       'Content-type': 'application/json',
       apikey: this.key,
     };
 
     return this.http.get(
-      'https://destinos.develotion.com/ventas.php?idVendedor=' + sellerId,
+      'https://destinos.develotion.com/ventas.php?idVendedor=' + this.sellerId,
       {
         headers,
       }
     );
   }
 
-  addSaleApi(
+  addSaleApi=(
     client: string,
     packageId: number,
     childs: number,
     adults: number
-  ) {
+  ) =>{
     this.key = this.user.getApiKey().toString();
     this.sellerId = this.user.getUserId();
     const headers = {

@@ -1,19 +1,20 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { UserService } from './user.service';
+import { Product } from '../models/product';
 
 
 @Injectable({
   providedIn: 'root',
 })
 export class ProductService {
-  products: any;
+  products: Product[] = [];
   key:any;
 
   constructor(private http: HttpClient, private user : UserService) {}
 
   setProducts(products : any){
-    this.products = products;
+    this.products = products.destinos;
   }
 
   getProducts(){

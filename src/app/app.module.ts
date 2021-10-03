@@ -35,6 +35,12 @@ import { OfferComponent } from './components/offer/offer.component';
 import { StatisticsComponent } from './components/statistics/statistics.component';
 import { Page404Component } from './components/page404/page404.component';
 import { NzResultModule } from 'ng-zorro-antd/result';
+import { NzSelectModule } from 'ng-zorro-antd/select';
+import { SalesBySellerComponent } from './components/sales-by-seller/sales-by-seller.component';
+import { SalesBySellerQuantityComponent } from './components/sales-by-seller-quantity/sales-by-seller-quantity.component';
+import { SalesBySellerListComponent } from './components/sales-by-seller-list/sales-by-seller-list.component';
+import { NzStatisticModule } from 'ng-zorro-antd/statistic';
+
 
 registerLocaleData(es);
 
@@ -51,6 +57,9 @@ registerLocaleData(es);
     StatisticsComponent,
     Page404Component,
     TravelsalesComponent,
+    SalesBySellerComponent,
+    SalesBySellerQuantityComponent,
+    SalesBySellerListComponent,
   ],
   imports: [
     BrowserModule,
@@ -72,6 +81,8 @@ registerLocaleData(es);
     NzNotificationModule,
     NzListModule,
     NzResultModule,
+    NzSelectModule,
+    NzStatisticModule,
   ],
   providers: [{ provide: NZ_I18N, useValue: es_ES }],
   bootstrap: [AppComponent],
