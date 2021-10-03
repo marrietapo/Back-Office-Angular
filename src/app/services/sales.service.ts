@@ -13,14 +13,7 @@ export class SalesService {
 
   constructor(private http: HttpClient, private user: UserService) {}
 
-  addSale = (sale: any) => {
-    let newSale = new Sale();
-    newSale.id = sale.id;
-    newSale.id_paquete = sale.id_paquete;
-    newSale.nombre_cliente = sale.nombre_cliente;
-    newSale.cantidad_menores = sale.cantidad_menores;
-    newSale.cantidad_mayores = sale.cantidad_mayores;
-    newSale.vendedor_id = this.user.getUserId();
+  addSale = (newSale: Sale) => {
     this.sales = [...this.sales, newSale];
   };
 
@@ -28,11 +21,15 @@ export class SalesService {
     return this.sales;
   };
 
+  getSalesByProductId = (id : number) : Sale|any=>{
+    return this.sales.filter((s) => s.id_paquete === id);
+  }
+
   setSales = (sales: any) => {
     console.log(sales);
     this.sales = sales;
-
   };
+
 
   getSalesBySellerApi = () => {
     this.key = this.user.getApiKey().toString();

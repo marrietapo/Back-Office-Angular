@@ -13,9 +13,9 @@ import { UserService } from 'src/app/services/user.service';
   styleUrls: ['./travelsales.component.scss'],
 })
 export class TravelsalesComponent implements OnInit {
-  childValue: number = 0;
-  adultValue: number = 1;
-  selectedValue: number = 0;
+  childValue!: number;
+  adultValue!: number;
+  selectedValue!:number;
   validateForm!: FormGroup;
   data: any;
 
@@ -26,28 +26,39 @@ export class TravelsalesComponent implements OnInit {
         this.validateForm.controls[i].updateValueAndValidity();
       }
     }
+    const { cliente, menores, adultos, paquete } = this.validateForm.value;
+
     this.salesService
       .addSaleApi(
-        this.validateForm.value,
-        this.selectedValue,
-        this.childValue,
-        this.adultValue
+        cliente,
+        paquete,
+        menores,
+        adultos
       )
       .subscribe(
         (response) => {
-          console.log(response);
-          this.notificationService.success('Venta efectuada correctamente', '');
 
-          this.salesService.addSale(
-            new Sale()
-          );
-          this.router.navigate(['/paquetes']);
+          this.notificationService.success('Venta efectuada correctamente', '');
+          this.handleNewSale(response, adultos, menores, Number.parseInt(paquete), cliente);
+          this.router.navigate(['/ventas']);
         },
         ({ error: { mensaje } }) => {
           this.notificationService.error(mensaje, '');
         }
       );
   }
+
+  handleNewSale(response:any, mayores:number, menores:number, paquete: number, cliente:string){
+    let sale = new Sale();
+    sale.id = response.idVenta;
+    sale.cantidad_mayores = mayores;
+    sale.cantidad_menores = menores;
+    sale.id_paquete = paquete;
+    sale.nombre_cliente = cliente;
+    sale.vendedor_id = this.userService.getUserId();
+    this.salesService.addSale(sale);
+  }
+
 
   constructor(
     private fb: FormBuilder,
@@ -60,7 +71,10 @@ export class TravelsalesComponent implements OnInit {
 
   ngOnInit(): void {
     this.validateForm = this.fb.group({
-      userName: [null, [Validators.required]],
+      cliente: [null, [Validators.required]],
+      menores:[null, [Validators.required]],
+      adultos:[null, [Validators.required]],
+      paquete:[null, [Validators.required]]
     });
 
     this.data = this.productService.getProducts();

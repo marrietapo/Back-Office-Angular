@@ -42,6 +42,7 @@ import { TravellistComponent } from './components/travellist/travellist.componen
 import { InitialComponent } from './components/initial/initial.component';
 import { NzAvatarModule } from 'ng-zorro-antd/avatar';
 import { NzDividerModule } from 'ng-zorro-antd/divider';
+import { TravellersByDestinationComponent } from './components/travellers-by-destination/travellers-by-destination.component';
 
 registerLocaleData(es);
 
@@ -62,6 +63,7 @@ registerLocaleData(es);
     SalesBySellerQuantityComponent,
     SalesBySellerListComponent,
     InitialComponent,
+    TravellersByDestinationComponent,
   ],
   imports: [
     BrowserModule,

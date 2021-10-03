@@ -6,7 +6,6 @@
     <form
     nz-form
     [formGroup]="validateForm"
-
     class="sell-form"
     (ngSubmit)="submitForm()"
     >
@@ -17,22 +16,26 @@
             <input
               type="text"
               nz-input
-              formControlName="userName"
+              formControlName="cliente"
               placeholder="Nombre de comprador"
             />
           </nz-input-group>
         </nz-form-control>
       </nz-form-item>
       <nz-form-item >
-     <nz-select nzShowSearch nzAllowClear nzPlaceHolder="Seleccione un paquete" (ngModel)="selectedValue" >
-      <nz-option nzLabel={{item.nombre}} nzValue={{item.id}} *ngFor="let item of data">{{item.nombre}}</nz-option>
-    </nz-select>
+        <nz-form-control nzErrorTip="Ingrese el nombre del Comprador">
+          <nz-select formControlName="paquete" nzShowSearch nzAllowClear nzPlaceHolder="Seleccione un paquete" (ngModel)="selectedValue" >
+           <nz-option nzLabel={{item.nombre}} nzValue={{item.id}} *ngFor="let item of data">{{item.id}}</nz-option>
+         </nz-select>
+        </nz-form-control>
       </nz-form-item>
       <nz-form-item>
       <div nz-row>
         <div nz-col nzSpan="12"><label>Cantidad de adultos </label></div>
         <div nz-col nzSpan="12">
-          <nz-input-number [(ngModel)]= adultValue [nzMin]="1" [nzMax]="10" [nzStep]="1" [nzPlaceHolder]="'0'"></nz-input-number>
+          <nz-form-control nzErrorTip="Ingrese el nombre del Comprador">
+            <nz-input-number formControlName="adultos" [(ngModel)]= "adultValue" [nzMin]="1" [nzMax]="10" [nzStep]="1" [nzPlaceHolder]="'0'"></nz-input-number>
+          </nz-form-control>
         </div>
       </div>
     </nz-form-item>
@@ -40,7 +43,10 @@
     <div nz-row>
         <div nz-col nzSpan="12"><label>Cantidad de niños </label></div>
         <div nz-col nzSpan="12">
-          <nz-input-number [(ngModel)]= childValue [nzPlaceHolder]="'0'" [nzMin]="0" [nzMax]="10" [nzStep]="1" class="input-number"></nz-input-number>
+          <nz-form-control nzErrorTip="Ingrese el nombre del Comprador">
+
+            <nz-input-number formControlName="menores" [(ngModel)]= "childValue" [nzPlaceHolder]="'0'" [nzMin]="0" [nzMax]="10" [nzStep]="1" class="input-number"></nz-input-number>
+          </nz-form-control>
         </div>
       </div>
     </nz-form-item>

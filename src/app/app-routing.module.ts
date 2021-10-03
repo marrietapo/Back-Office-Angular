@@ -9,6 +9,7 @@ import { StatisticsComponent } from './components/statistics/statistics.componen
 import { Page404Component } from './components/page404/page404.component';
 import { SalesBySellerComponent } from './components/sales-by-seller/sales-by-seller.component';
 import { InitialComponent } from './components/initial/initial.component';
+import { TravellersByDestinationComponent } from './components/travellers-by-destination/travellers-by-destination.component';
 
 const routes: Routes = [
   { path: '', component: WelcomeComponent, pathMatch: 'full' },
@@ -18,6 +19,12 @@ const routes: Routes = [
   { path: 'paquetes', component: TravellistComponent, pathMatch: 'full' },
   { path: 'ventas', component: SalesBySellerComponent, pathMatch: 'full' },
   { path: 'destinos-top', component: DestinationComponent, pathMatch: 'full' },
+  {
+    path: 'viajeros-destino',
+    component: TravellersByDestinationComponent,
+    pathMatch: 'full',
+  },
+
   {
     path: 'destinos-promocion',
     component: OfferComponent,

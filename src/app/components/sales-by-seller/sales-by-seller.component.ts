@@ -45,7 +45,7 @@ export class SalesBySellerComponent implements OnInit {
 
     this.salesData.forEach((element: {id: number;id_paquete: number;nombre_cliente: string; cantidad_menores: number; cantidad_mayores: number; vendedor_id:number; }) => {
       let paquete: Product[];
-      paquete = this.productService.getProductById(1);
+      paquete = this.productService.getProductById(element.id_paquete);
 
       let travel = {
         id: element.id,
@@ -62,7 +62,7 @@ export class SalesBySellerComponent implements OnInit {
         this.travelsData = [...this.travelsData, travel];
       }
     );
-    console.log(this.travelsData);
+
   }
 
 
