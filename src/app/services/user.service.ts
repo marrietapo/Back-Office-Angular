@@ -23,7 +23,7 @@ export class UserService {
   }
 
   logOut(){
-    this.user = undefined;
+    this.user = null;
   }
 
   login = (usuario: string, password: string) =>{

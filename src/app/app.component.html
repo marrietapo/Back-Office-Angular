@@ -1,1 +1,6 @@
-<app-dashboard></app-dashboard>
+<ng-container *ngIf="this.userExists">
+  <app-dashboard></app-dashboard>
+</ng-container>
+<ng-container *ngIf="!this.userExists">
+  <app-welcome></app-welcome>
+</ng-container>

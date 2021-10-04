@@ -1,16 +1,29 @@
 import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
+
 import { NZ_I18N } from 'ng-zorro-antd/i18n';
 import { es_ES } from 'ng-zorro-antd/i18n';
 import { registerLocaleData } from '@angular/common';
 import es from '@angular/common/locales/es';
 import { BrowserModule } from '@angular/platform-browser';
-import { AppRoutingModule } from './app-routing.module';
-import { CommonModule } from '@angular/common';
-import { AppComponent } from './app.component';
+
+
+import { DashboardRoutingModule } from './dashboard-routing.module';
+import { TravellistComponent } from '../travellist/travellist.component';
+import { DestinationComponent } from '../destination/destination.component';
+import { OfferComponent } from '../offer/offer.component';
+import { StatisticsComponent } from '../statistics/statistics.component';
+import { Page404Component } from '../page404/page404.component';
+import { TravelsalesComponent } from '../travelsales/travelsales.component';
+import { SalesBySellerComponent } from '../sales-by-seller/sales-by-seller.component';
+import { SalesBySellerQuantityComponent } from '../sales-by-seller-quantity/sales-by-seller-quantity.component';
+import { SalesBySellerListComponent } from '../sales-by-seller-list/sales-by-seller-list.component';
+import { InitialComponent } from '../initial/initial.component';
+import { TravellersByDestinationComponent } from '../travellers-by-destination/travellers-by-destination.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { IconsProviderModule } from './icons-provider.module';
+import { IconsProviderModule } from '../../icons-provider.module';
 import { NzLayoutModule } from 'ng-zorro-antd/layout';
 import { NzMenuModule } from 'ng-zorro-antd/menu';
 import { NzFormModule } from 'ng-zorro-antd/form';
@@ -27,33 +40,9 @@ import { NzSelectModule } from 'ng-zorro-antd/select';
 import { NzStatisticModule } from 'ng-zorro-antd/statistic';
 import { NzCardModule } from 'ng-zorro-antd/card';
 
-import { SinginComponent } from './components/singin/singin.component';
-import { SingupComponent } from './components/singup/singup.component';
-import { WelcomeComponent } from './components/welcome/welcome.component';
-import { DashboardComponent } from './components/dashboard/dashboard.component';
-import { DestinationComponent } from './components/destination/destination.component';
-import { OfferComponent } from './components/offer/offer.component';
-import { StatisticsComponent } from './components/statistics/statistics.component';
-import { SalesBySellerComponent } from './components/sales-by-seller/sales-by-seller.component';
-import { SalesBySellerQuantityComponent } from './components/sales-by-seller-quantity/sales-by-seller-quantity.component';
-import { SalesBySellerListComponent } from './components/sales-by-seller-list/sales-by-seller-list.component';
-import { Page404Component } from './components/page404/page404.component';
-import { TravelsalesComponent } from './components/travelsales/travelsales.component';
-import { TravellistComponent } from './components/travellist/travellist.component';
-import { InitialComponent } from './components/initial/initial.component';
-import { NzAvatarModule } from 'ng-zorro-antd/avatar';
-import { NzDividerModule } from 'ng-zorro-antd/divider';
-import { TravellersByDestinationComponent } from './components/travellers-by-destination/travellers-by-destination.component';
-
-registerLocaleData(es);
 
 @NgModule({
   declarations: [
-    AppComponent,
-    WelcomeComponent,
-    //SinginComponent,
-    //SingupComponent,
-    DashboardComponent,
     TravellistComponent,
     DestinationComponent,
     OfferComponent,
@@ -66,9 +55,9 @@ registerLocaleData(es);
     TravellersByDestinationComponent,
   ],
   imports: [
+
     CommonModule,
-    BrowserModule,
-    AppRoutingModule,
+    DashboardRoutingModule,
     FormsModule,
     HttpClientModule,
     BrowserAnimationsModule,
@@ -89,10 +78,7 @@ registerLocaleData(es);
     NzSelectModule,
     NzStatisticModule,
     NzCardModule,
-    NzAvatarModule,
-    NzDividerModule,
+
   ],
-  providers: [{ provide: NZ_I18N, useValue: es_ES }],
-  bootstrap: [AppComponent],
 })
-export class AppModule {}
+export class DashboardModule {}
