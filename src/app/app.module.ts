@@ -27,8 +27,6 @@ import { NzSelectModule } from 'ng-zorro-antd/select';
 import { NzStatisticModule } from 'ng-zorro-antd/statistic';
 import { NzCardModule } from 'ng-zorro-antd/card';
 
-import { SinginComponent } from './components/singin/singin.component';
-import { SingupComponent } from './components/singup/singup.component';
 import { WelcomeComponent } from './components/welcome/welcome.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { DestinationComponent } from './components/destination/destination.component';
@@ -40,10 +38,11 @@ import { SalesBySellerListComponent } from './components/sales-by-seller-list/sa
 import { Page404Component } from './components/page404/page404.component';
 import { TravelsalesComponent } from './components/travelsales/travelsales.component';
 import { TravellistComponent } from './components/travellist/travellist.component';
-import { InitialComponent } from './components/initial/initial.component';
 import { NzAvatarModule } from 'ng-zorro-antd/avatar';
 import { NzDividerModule } from 'ng-zorro-antd/divider';
 import { TravellersByDestinationComponent } from './components/travellers-by-destination/travellers-by-destination.component';
+import { NgApexchartsModule } from 'ng-apexcharts';
+
 
 registerLocaleData(es);
 
@@ -51,8 +50,6 @@ registerLocaleData(es);
   declarations: [
     AppComponent,
     WelcomeComponent,
-    //SinginComponent,
-    //SingupComponent,
     DashboardComponent,
     TravellistComponent,
     DestinationComponent,
@@ -91,6 +88,7 @@ registerLocaleData(es);
     NzCardModule,
     NzAvatarModule,
     NzDividerModule,
+    NgApexchartsModule,
   ],
   providers: [{ provide: NZ_I18N, useValue: es_ES }],
   bootstrap: [AppComponent],

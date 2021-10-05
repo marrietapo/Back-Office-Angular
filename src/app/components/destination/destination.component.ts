@@ -38,7 +38,6 @@ export class DestinationComponent implements OnInit {
         };
         this.travelsData = [...this.travelsData, travel];
       }
-
     });
   }
 }

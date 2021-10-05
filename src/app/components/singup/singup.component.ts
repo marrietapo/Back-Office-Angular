@@ -22,7 +22,7 @@ export class SingupComponent implements OnInit {
     const { usuario, password } = this.registerForm.value;
     this.userService.register(usuario, password).subscribe(
       (user) => {
-        this.userService.setUser(user);
+        //this.userService.setUser(user);
         this.notificationService.success('Usuario registrado correctamente', '');
       },
       ({ error: { mensaje } }) => {
