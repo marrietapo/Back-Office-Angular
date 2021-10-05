@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { NzNotificationService } from 'ng-zorro-antd/notification';
 import { Sale } from 'src/app/models/sale';
+import { LocalStorageService } from 'src/app/services/local-storage.service';
 import { ProductService } from 'src/app/services/product.service';
 import { SalesService } from 'src/app/services/sales.service';
 import { UserService } from 'src/app/services/user.service';
@@ -15,30 +16,20 @@ import { UserService } from 'src/app/services/user.service';
 export class InitialComponent implements OnInit {
   respuesta!: any;
 
-  constructor(private userService: UserService, private router: Router) {}
+  constructor(
+    private userService: UserService,
+    private localStorageService: LocalStorageService,
+    private router: Router
+  ) {}
 
   ngOnInit(): void {
     console.log(this.userService.getUserId());
-    if (this.userService.getUserId() === undefined) {
+    if (this.localStorageService.getLocalStorageUserId!==undefined) {
       this.router.navigate(['login']);
-    }else{
+    } else {
       this.router.navigate(['dashboard']);
     }
 
-    // this.salesService.getSalesBySellerApi().subscribe(
-    //     (response) => {
-    //       this.respuesta = response;
-    //       this.salesService.setSales(this.respuesta.ventas);
-    //     },
-    //     ({ error: { message } }) => {}
-    // );
 
-    // this.productService.getAllProductsApi().subscribe(
-    //   (products) => {
-    //     this.productService.setProducts(products);
-    //   },
-    //   ({ error: { mensaje } }) => {
-    //     this.notificationService.error(mensaje, '');
-    //   });
   }
 }

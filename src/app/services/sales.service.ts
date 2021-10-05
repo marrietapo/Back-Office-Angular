@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Sale } from '../models/sale';
+import { LocalStorageService } from './local-storage.service';
 import { UserService } from './user.service';
 
 @Injectable({
@@ -8,10 +9,10 @@ import { UserService } from './user.service';
 })
 export class SalesService {
   sales!: Sale[];
-  key!: string;
-  sellerId!: number;
+  key!: any;
+  sellerId!: any;
 
-  constructor(private http: HttpClient, private user: UserService) {}
+  constructor(private http: HttpClient, private localStorageService : LocalStorageService) {}
 
   addSale = (newSale: Sale) => {
     this.sales = [...this.sales, newSale];
@@ -32,8 +33,8 @@ export class SalesService {
 
 
   getSalesBySellerApi = () => {
-    this.key = this.user.getApiKey().toString();
-    this.sellerId = this.user.getUserId();
+    this.key = this.localStorageService.getLocalStorageApiKey();
+    this.sellerId = this.localStorageService.getLocalStorageUserId();
     const headers = {
       'Content-type': 'application/json',
       apikey: this.key,
@@ -53,8 +54,8 @@ export class SalesService {
     childs: number,
     adults: number
   ) => {
-    this.key = this.user.getApiKey().toString();
-    this.sellerId = this.user.getUserId();
+    this.key = this.localStorageService.getLocalStorageApiKey();
+    this.sellerId = this.localStorageService.getLocalStorageUserId();
     const headers = {
       'Content-type': 'application/json',
       apikey: this.key,

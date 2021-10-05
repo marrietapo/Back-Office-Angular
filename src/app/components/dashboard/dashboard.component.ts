@@ -3,6 +3,7 @@ import { SalesService } from "../../services/sales.service";
 import { ProductService } from '../../services/product.service';
 import { Sale } from 'src/app/models/sale';
 import { UserService } from 'src/app/services/user.service';
+import { LocalStorageService } from 'src/app/services/local-storage.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -13,15 +14,16 @@ export class DashboardComponent implements OnInit {
   isCollapsed = false;
   sales : Sale[]= [];
   userExists! : boolean;
+  respuesta!:any;
 
-  constructor(private salesService: SalesService, private productService: ProductService, private userService : UserService) {}
+  constructor(private salesService: SalesService, private productService: ProductService, private userService : UserService, private localStorageService: LocalStorageService) {}
 
   ngOnInit(): void {
-    this.userExists = localStorage.getItem('user') !== null;
-    // this.userExists = this.userService.getUserId()!==undefined;
+    this.userExists = this.localStorageService.getLocalStorageUserId !==null;
     this.salesService.getSalesBySellerApi().subscribe(
-      (sales) => {
-        this.salesService.setSales(sales);
+      (response) => {
+        this.respuesta = response;
+        this.salesService.setSales(this.respuesta.ventas);
       },
       ({ error: { mensaje } }) => {
 
@@ -29,8 +31,8 @@ export class DashboardComponent implements OnInit {
     );
 
     this.productService.getAllProductsApi().subscribe(
-      (products) =>{
-        this.productService.setProducts(products);
+      (response) =>{
+        this.productService.setProducts(response);
       },
       ({error:{mensaje}})=>{
 

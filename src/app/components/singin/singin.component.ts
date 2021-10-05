@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { UserService } from '../../services/user.service';
 import { NzNotificationService } from 'ng-zorro-antd/notification';
+import { LocalStorageService } from 'src/app/services/local-storage.service';
 
 
 @Component({
@@ -25,16 +26,20 @@ export class SinginComponent implements OnInit {
     this.userService.login(usuario, password).subscribe(
       (user) => {
         this.userService.setUser(user);
+        this.setLocalStorageData(user);
 
-        localStorage.setItem("user",JSON.stringify(user));
-
-        this.notificationService.success("Usuario logueado correctamente", "");
+        this.notificationService.success('Usuario logueado correctamente', '');
         this.router.navigate(['dashboard']);
       },
       ({ error: { mensaje } }) => {
-        this.notificationService.error(mensaje,'');
+        this.notificationService.error(mensaje, '');
       }
     );
+  }
+
+  setLocalStorageData(data: any) {
+    this.localSorageService.setLocalStorageUserId(data.id);
+    this.localSorageService.setLocalStorageApiKey(data.apiKey);
   }
 
   constructor(
@@ -42,6 +47,7 @@ export class SinginComponent implements OnInit {
     private userService: UserService,
     private router: Router,
     private notificationService: NzNotificationService,
+    private localSorageService: LocalStorageService,
   ) {}
 
   ngOnInit(): void {

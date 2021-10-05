@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { WelcomeComponent } from './components/welcome/welcome.component';
+import { LocalStorageService } from './services/local-storage.service';
 import { UserService } from './services/user.service';
 
 @Component({
@@ -10,11 +11,11 @@ import { UserService } from './services/user.service';
 export class AppComponent implements OnInit{
    userExists!:boolean
 
-  constructor(private userService : UserService){}
+  constructor(private localStorageService : LocalStorageService){}
 
   ngOnInit(): void {
     // this.userExists = this.userService.getUserId()!==undefined;
-    this.userExists =  localStorage.getItem('user') !== null;
+    this.userExists = this.localStorageService.getLocalStorageUserId !== null;
   }
   isCollapsed = false;
 }

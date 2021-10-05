@@ -9,16 +9,7 @@ import { Component, OnInit } from '@angular/core';
 export class WelcomeComponent implements OnInit {
 
 
-  tabs = [
-    {
-      name: 'Loguearme',
-      icon: 'arrow'
-    },
-    {
-      name: 'Registrarme',
-      icon: 'arrow'
-    }
-  ];
+
   constructor() { }
 
   ngOnInit(): void {
