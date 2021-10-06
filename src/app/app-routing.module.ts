@@ -18,7 +18,7 @@ const routes: Routes = [
     loadChildren: () =>
       import('./components/welcome/welcome.module').then((m) => m.WelcomeModule),
   },
-  { path: 'dashboard', component: DashboardComponent, pathMatch: 'full' },
+  { path: 'dashboard', component: DashboardComponent },
   { path: 'venta', component: TravelsalesComponent, pathMatch: 'full' },
   { path: 'paquetes', component: TravellistComponent, pathMatch: 'full' },
   { path: 'ventas', component: SalesBySellerComponent, pathMatch: 'full' },

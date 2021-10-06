@@ -1,17 +1,11 @@
-<div nz-row>
+<div nz-row class="container">
   <div nz-col nzSpan="8"></div>
   <div nz-col nzSpan="8">
-    <nz-tabset>
-      <nz-tab nzTitle="Loguearme">
-        <ng-template #titleTemplate>
-          <i nz-icon nzType='user'></i>
-        </ng-template>
+    <nz-tabset class="login-tab">
+      <nz-tab nzTitle="Loguearme" class="tab">
         <app-singin></app-singin>
       </nz-tab>
-      <nz-tab nzTitle="Registrarme">
-        <ng-template #titleTemplate>
-          <i nz-icon nzType='apple'></i>
-        </ng-template>
+      <nz-tab nzTitle="Registrarme" class="tab">
         <app-singup></app-singup>
       </nz-tab>
     </nz-tabset>

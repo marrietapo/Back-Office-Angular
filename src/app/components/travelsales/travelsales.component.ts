@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { NzNotificationService } from 'ng-zorro-antd/notification';
 import { Sale } from 'src/app/models/sale';
+import { LocalStorageService } from 'src/app/services/local-storage.service';
 import { ProductService } from 'src/app/services/product.service';
 import { SalesService } from 'src/app/services/sales.service';
 import { UserService } from 'src/app/services/user.service';
@@ -17,7 +18,7 @@ export class TravelsalesComponent implements OnInit {
   adultValue!: number;
   selectedValue!:number;
   validateForm!: FormGroup;
-  data: any;
+  data!: any[];
 
   submitForm(): void {
     for (const i in this.validateForm.controls) {
@@ -55,7 +56,7 @@ export class TravelsalesComponent implements OnInit {
     sale.cantidad_menores = menores;
     sale.id_paquete = paquete;
     sale.nombre_cliente = cliente;
-    sale.vendedor_id = this.userService.getUserId();
+    sale.vendedor_id = this.localStorageService.getLocalStorageUserId() ;
     this.salesService.addSale(sale);
   }
 
@@ -64,7 +65,7 @@ export class TravelsalesComponent implements OnInit {
     private fb: FormBuilder,
     private productService: ProductService,
     private salesService: SalesService,
-    private userService: UserService,
+    private localStorageService: LocalStorageService,
     private notificationService: NzNotificationService,
     private router: Router
   ) {}
@@ -75,6 +76,8 @@ export class TravelsalesComponent implements OnInit {
       menores:[null, [Validators.required]],
       adultos:[null, [Validators.required]],
       paquete:[null, [Validators.required]]
+
+
     });
 
     this.data = this.productService.getProducts();

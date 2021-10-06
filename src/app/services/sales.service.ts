@@ -8,29 +8,33 @@ import { UserService } from './user.service';
   providedIn: 'root',
 })
 export class SalesService {
-  sales!: Sale[];
+  sales: Sale[] | any[] = [];
   key!: any;
   sellerId!: any;
 
-  constructor(private http: HttpClient, private localStorageService : LocalStorageService) {}
+  constructor(
+    private http: HttpClient,
+    private localStorageService: LocalStorageService
+  ) {}
 
   addSale = (newSale: Sale) => {
     this.sales = [...this.sales, newSale];
   };
 
   getSales = () => {
+    if (this.sales.length === 0) {
+      this.setSales(this.getSalesBySellerApi());
+    }
     return this.sales;
   };
 
-  getSalesByProductId = (id : number) : Sale|any=>{
+  getSalesByProductId = (id: number): Sale | any => {
     return this.sales.filter((s) => s.id_paquete === id);
-  }
-
-  setSales = (sales: any) => {
-    console.log(sales);
-    this.sales = sales;
   };
 
+  setSales = (sales: any) => {
+    this.sales = sales;
+  };
 
   getSalesBySellerApi = () => {
     this.key = this.localStorageService.getLocalStorageApiKey();

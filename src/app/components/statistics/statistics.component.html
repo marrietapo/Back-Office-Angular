@@ -1,10 +1,8 @@
-
-
-<div nz-row>
-  <div nz-col nzSpan="12">
-    <!-- <apx-chart [series]="series" [chart]="chart" [title]="title"></apx-chart> -->
-  </div>
-  <div nz-col nzSpan="12">
-    <!-- <apx-chart [series]="series" [chart]="chart" [title]="title"></apx-chart> -->
-  </div>
-</div>
+  <h3>Precio promedio por Paquete</h3>
+  <apx-chart
+    [series]="chartOptions.series"
+    [chart]="chartOptions.chart"
+    [xaxis]="chartOptions.xaxis"
+    [title]="chartOptions.title"
+    [labels]="chartOptions.labels"
+  ></apx-chart>

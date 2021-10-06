@@ -14,8 +14,7 @@ export class AppComponent implements OnInit{
   constructor(private localStorageService : LocalStorageService){}
 
   ngOnInit(): void {
-    // this.userExists = this.userService.getUserId()!==undefined;
-    this.userExists = this.localStorageService.getLocalStorageUserId !== null;
+    this.userExists = this.localStorageService.getLocalStorageUserId() !== undefined;
   }
   isCollapsed = false;
 }

@@ -1,21 +1,25 @@
 <div class="travel_list">
   <h3>Listado de paquetes vendidos</h3>
-   <nz-list nzItemLayout="horizontal" >
-        <nz-list-item *ngFor="let item of travelsData">
-          <nz-list-item-meta
-            nzAvatar="user"
-          >
-            <nz-list-item-meta-title>
-              {{ item.nombre_cliente }} - {{item.nombre_paquete}}
-            </nz-list-item-meta-title>
-            <nz-list-item-meta-description>
-              Cantidad Adultos: {{ item.cantidad_mayores }} - Cantidad Menores: {{item.cantidad_menores}}
-            </nz-list-item-meta-description>
-          </nz-list-item-meta>
-              <ul nz-list-item-actions>
-                <nz-list-item-action>Precio Total --> ${{item.cantidad_mayores*item.precio_mayor + item.cantidad_menores*item.precio_menor}}</nz-list-item-action>
-              </ul>
-        </nz-list-item>
-        <nz-list-empty *ngIf="travelsData.length === 0"></nz-list-empty>
-      </nz-list>
+  <nz-list nzItemLayout="horizontal">
+    <nz-list-item *ngFor="let item of travelsData">
+      <nz-list-item-meta nzAvatar="user">
+        <nz-list-item-meta-title>
+          {{ item.nombre_cliente }} - {{ item.nombre_paquete }}
+        </nz-list-item-meta-title>
+        <nz-list-item-meta-description>
+          Cantidad Adultos: {{ item.cantidad_mayores }} - Cantidad Menores:
+          {{ item.cantidad_menores }}
+        </nz-list-item-meta-description>
+      </nz-list-item-meta>
+      <ul nz-list-item-actions>
+        <nz-list-item-action
+          >Precio Total --> ${{
+            item.cantidad_mayores * item.precio_mayor +
+              item.cantidad_menores * item.precio_menor
+          }}</nz-list-item-action
+        >
+      </ul>
+    </nz-list-item>
+    <nz-list-empty *ngIf="travelsData.length === 0"></nz-list-empty>
+  </nz-list>
 </div>

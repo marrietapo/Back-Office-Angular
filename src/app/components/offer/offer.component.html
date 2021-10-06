@@ -6,12 +6,12 @@
             nzAvatar="user"
           >
             <nz-list-item-meta-title>
-              {{ item.nombre}}
+              {{ item.nombre }}
             </nz-list-item-meta-title>
           </nz-list-item-meta>
-              <ul nz-list-item-actions>
-                <nz-list-item-action> --> {{item.quantity}}</nz-list-item-action>
-              </ul>
+           <ul nz-list-item-actions>
+             <nz-list-item-action> --> {{item.quantity}}</nz-list-item-action>
+           </ul>
         </nz-list-item>
         <nz-list-empty *ngIf="travelsData.length === 0"></nz-list-empty>
       </nz-list>

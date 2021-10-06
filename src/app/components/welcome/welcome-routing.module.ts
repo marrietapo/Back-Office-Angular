@@ -4,6 +4,7 @@ import { InitialComponent } from '../initial/initial.component';
 
 
 const routes: Routes = [
+
   {
     path:"login",
     component:InitialComponent,
