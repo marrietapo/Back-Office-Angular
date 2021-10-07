@@ -18,16 +18,6 @@ export class SalesService {
   ) {}
 
 
-    getStarted(){
-      let respuesta:any;
-      this.getSalesBySellerApi().subscribe(
-        (response) => {
-          respuesta = response;
-          this.setSales(respuesta.ventas);
-        },
-        ({ error: { mensaje } }) => {}
-      );
-    }
 
   addSale = (newSale: Sale) => {
     this.sales = [...this.sales, newSale];

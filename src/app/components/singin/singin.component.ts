@@ -31,8 +31,6 @@ export class SinginComponent implements OnInit {
         this.setLocalStorageData(user);
 
         this.notificationService.success('Usuario logueado correctamente', '');
-        this.productService.getStarted();
-        this.salesService.getStarted();
         this.router.navigate(['dashboard']);
       },
       ({ error: { mensaje } }) => {

@@ -24,8 +24,6 @@ export class SalesBySellerComponent implements OnInit {
   constructor(
     private productService: ProductService,
     private salesService: SalesService,
-    private userService: UserService,
-    private notificationService: NzNotificationService,
 
   ) { }
 
@@ -34,34 +32,36 @@ export class SalesBySellerComponent implements OnInit {
     this.travelsData = [];
     this.productData = this.productService.getProducts();
     this.salesData = this.salesService.getSales();
-    this.quantity = this.salesData.length;
-    this.handleData();
+    this.quantity = this.salesData.length!==undefined?this.salesData.length:0;
 
+    this.handleData();
 
   }
 
 
   handleData(){
 
-    this.salesData.forEach((element: {id: number;id_paquete: number;nombre_cliente: string; cantidad_menores: number; cantidad_mayores: number; vendedor_id:number; }) => {
+    if(this.salesData.length > 0){
+    this.salesData.forEach((element: {id: number;id_paquete: number; nombre_cliente: string; cantidad_menores: number; cantidad_mayores: number; vendedor_id:number; }) => {
       let paquete: Product[];
       paquete = this.productService.getProductById(element.id_paquete);
-
-      let travel = {
-        id: element.id,
-        id_paquete: element.id_paquete,
-        nombre_paquete: paquete[0].nombre,
-        nombre_cliente: element.nombre_cliente,
-        cantidad_menores: element.cantidad_menores,
-        cantidad_mayores: element.cantidad_mayores,
-        vendedor_id: element.vendedor_id,
-        precio_menor: paquete[0].precio_menor,
-        precio_mayor: paquete[0].precio_mayor
-      };
+      let travel;
+        travel = {
+          id: element.id,
+          id_paquete: element.id_paquete,
+          nombre_paquete: paquete[0].nombre,
+          nombre_cliente: element.nombre_cliente,
+          cantidad_menores: element.cantidad_menores,
+          cantidad_mayores: element.cantidad_mayores,
+          vendedor_id: element.vendedor_id,
+          precio_menor: paquete[0].precio_menor,
+          precio_mayor: paquete[0].precio_mayor
+        };
 
         this.travelsData = [...this.travelsData, travel];
       }
-    );
+      );
+    }
 
   }
 

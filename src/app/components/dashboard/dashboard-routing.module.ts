@@ -14,9 +14,9 @@ const routes: Routes = [
     path: '',
     component: DashboardComponent,
     children: [
-      { path: 'venta', component: SalesBySellerComponent },
+      { path: 'ventas', component: SalesBySellerComponent },
       { path: 'paquetes', component: TravellistComponent },
-      { path: 'ventas', component: TravelsalesComponent },
+      { path: 'venta', component: TravelsalesComponent },
       { path: 'viajeros-destino', component: TravellersByDestinationComponent },
       { path: 'destinos-top', component: DestinationComponent },
       { path: 'destinos-promocion', component: OfferComponent },

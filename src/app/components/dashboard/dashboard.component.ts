@@ -38,8 +38,6 @@ export class DashboardComponent implements OnInit {
 
       }
     )
-
-
   }
 
   logout = ()=>{

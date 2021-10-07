@@ -41,12 +41,5 @@ export class ProductService {
     });
   }
 
-  getStarted(){
-    this.getAllProductsApi().subscribe(
-      (response) => {
-        this.setProducts(response);
-      },
-      ({ error: { mensaje } }) => {}
-    );
-  }
+
 }

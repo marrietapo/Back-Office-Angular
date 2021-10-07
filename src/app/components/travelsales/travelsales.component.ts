@@ -19,6 +19,7 @@ export class TravelsalesComponent implements OnInit {
   selectedValue!:number;
   validateForm!: FormGroup;
   data!: any[];
+  respuesta: any;
 
   submitForm(): void {
     for (const i in this.validateForm.controls) {
@@ -28,25 +29,28 @@ export class TravelsalesComponent implements OnInit {
       }
     }
     const { cliente, menores, adultos, paquete } = this.validateForm.value;
-
-    this.salesService
-      .addSaleApi(
-        cliente,
-        paquete,
-        menores,
-        adultos
-      )
-      .subscribe(
-        (response) => {
-
-          this.notificationService.success('Venta efectuada correctamente', '');
-          this.handleNewSale(response, adultos, menores, Number.parseInt(paquete), cliente);
-          this.router.navigate(['/ventas']);
-        },
-        ({ error: { mensaje } }) => {
-          this.notificationService.error(mensaje, '');
-        }
-      );
+    if(cliente&&menores>=0&&adultos>0&&paquete){
+      this.salesService
+        .addSaleApi(
+          cliente,
+          paquete,
+          menores,
+          adultos
+        )
+        .subscribe(
+          (response) => {
+            this.respuesta = response as any;
+            if(this.respuesta.codigo === 200){
+              this.handleNewSale(response, adultos, menores, Number.parseInt(paquete), cliente);
+              this.router.navigate(['/dashboard/ventas']);
+            }
+            this.notificationService.success(this.respuesta.mensaje, '');
+          },
+          ({ error: { mensaje } }) => {
+            this.notificationService.error(mensaje, '');
+          }
+        );
+    }
   }
 
   handleNewSale(response:any, mayores:number, menores:number, paquete: number, cliente:string){
@@ -71,8 +75,8 @@ export class TravelsalesComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.productService.getStarted();
-    this.salesService.getStarted();
+    this.productService.getProducts();
+    this.salesService.getSales();
     this.validateForm = this.fb.group({
       cliente: [null, [Validators.required]],
       menores:[null, [Validators.required]],
