@@ -4,6 +4,8 @@ import { Router } from '@angular/router';
 import { UserService } from '../../services/user.service';
 import { NzNotificationService } from 'ng-zorro-antd/notification';
 import { LocalStorageService } from 'src/app/services/local-storage.service';
+import { ProductService } from 'src/app/services/product.service';
+import { SalesService } from 'src/app/services/sales.service';
 
 
 @Component({
@@ -29,7 +31,9 @@ export class SinginComponent implements OnInit {
         this.setLocalStorageData(user);
 
         this.notificationService.success('Usuario logueado correctamente', '');
-        this.router.navigate(['/dashboard']);
+        this.productService.getStarted();
+        this.salesService.getStarted();
+        this.router.navigate(['dashboard']);
       },
       ({ error: { mensaje } }) => {
         this.notificationService.error(mensaje, '');
@@ -45,15 +49,23 @@ export class SinginComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private userService: UserService,
+    private productService: ProductService,
+    private salesService: SalesService,
     private router: Router,
     private notificationService: NzNotificationService,
     private localSorageService: LocalStorageService,
   ) {}
 
   ngOnInit(): void {
+
+    if(this.localSorageService.isLogged()){
+       this.router.navigate(["dashboard"]);
+    }
+
     this.loginForm = this.fb.group({
       usuario: [null, [Validators.required]],
       password: [null, [Validators.required]],
     });
+
   }
 }

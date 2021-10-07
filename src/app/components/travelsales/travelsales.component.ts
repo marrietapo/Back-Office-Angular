@@ -71,6 +71,8 @@ export class TravelsalesComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    this.productService.getStarted();
+    this.salesService.getStarted();
     this.validateForm = this.fb.group({
       cliente: [null, [Validators.required]],
       menores:[null, [Validators.required]],

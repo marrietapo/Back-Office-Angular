@@ -13,13 +13,13 @@ import { LocalStorageService } from 'src/app/services/local-storage.service';
 export class DashboardComponent implements OnInit {
   isCollapsed = false;
   sales : Sale[]= [];
-  userExists! : boolean;
   respuesta!:any;
 
-  constructor(private salesService: SalesService, private productService: ProductService, private userService : UserService, private localStorageService: LocalStorageService) {}
+  constructor(private salesService: SalesService, private productService: ProductService, private localStorageService: LocalStorageService) {}
 
   ngOnInit(): void {
-    this.userExists = this.localStorageService.getLocalStorageUserId !==null;
+
+
     this.salesService.getSalesBySellerApi().subscribe(
       (response) => {
         this.respuesta = response;
@@ -39,7 +39,11 @@ export class DashboardComponent implements OnInit {
       }
     )
 
+
   }
 
+  logout = ()=>{
+    this.localStorageService.logout();
+  }
 
 }

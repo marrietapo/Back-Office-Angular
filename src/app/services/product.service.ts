@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Product } from '../models/product';
 import { LocalStorageService } from './local-storage.service';
+import { analyzeAndValidateNgModules } from '@angular/compiler';
 
 
 @Injectable({
@@ -38,5 +39,14 @@ export class ProductService {
     return this.http.get('https://destinos.develotion.com/paquetes.php', {
       headers,
     });
+  }
+
+  getStarted(){
+    this.getAllProductsApi().subscribe(
+      (response) => {
+        this.setProducts(response);
+      },
+      ({ error: { mensaje } }) => {}
+    );
   }
 }

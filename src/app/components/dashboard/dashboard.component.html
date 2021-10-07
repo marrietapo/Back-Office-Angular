@@ -1,4 +1,4 @@
-<ng-container *ngIf="this.userExists">
+<ng-container >
 <nz-layout class="app-layout">
   <nz-sider class="menu-sidebar"
             nzCollapsible
@@ -16,33 +16,33 @@
       <li nz-submenu nzOpen nzTitle="Ventas" nzIcon="shopping-cart">
         <ul>
           <li nz-menu-item nzMatchRouter>
-            <a routerLink="/venta">Realizar Venta</a>
+            <a routerLink="/dashboard/venta">Realizar Venta</a>
           </li>
           <li nz-menu-item nzMatchRouter>
-            <a routerLink="/paquetes">Lista de Paquetes</a>
+            <a routerLink="/dashboard/paquetes">Lista de Paquetes</a>
           </li>
           <li nz-menu-item nzMatchRouter>
-            <a routerLink="/ventas">Cantidad de Ventas</a>
+            <a routerLink="/dashboard/ventas">Cantidad de Ventas</a>
           </li>
         </ul>
       </li>
       <li nz-submenu nzOpen nzTitle="Destinos" nzIcon="form">
         <ul>
           <li nz-menu-item nzMatchRouter>
-            <a routerLink="/viajeros-destino">Viajeros por Destino</a>
+            <a routerLink="/dashboard/viajeros-destino">Viajeros por Destino</a>
           </li>
           <li nz-menu-item nzMatchRouter>
-            <a routerLink="/destinos-top">Destinos Top</a>
+            <a routerLink="/dashboard/destinos-top">Destinos Top</a>
           </li>
           <li nz-menu-item nzMatchRouter>
-            <a routerLink="/destinos-promocion">Destinos a Promocionar</a>
+            <a routerLink="/dashboard/destinos-promocion">Destinos a Promocionar</a>
           </li>
         </ul>
       </li>
       <li nz-submenu nzOpen nzTitle="Gráficos" nzIcon="bar-chart">
         <ul>
           <li nz-menu-item nzMatchRouter>
-            <a routerLink="/graficos">Ver gráficos</a>
+            <a routerLink="/dashboard/graficos">Ver gráficos</a>
           </li>
         </ul>
       </li>
@@ -55,6 +55,12 @@
             <i class="trigger"
                nz-icon
                [nzType]="isCollapsed ? 'menu-unfold' : 'menu-fold'"
+            ></i>
+        </span>
+        <span class="header-trigger" nzDirection="vertical" nzAlign="center" (click) ="logout()">
+            <i class="trigger logout"
+               nz-icon
+               [nzType]="'logout'"
             ></i>
         </span>
       </div>

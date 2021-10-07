@@ -1,10 +1,11 @@
 import { Injectable } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root',
 })
 export class LocalStorageService {
-  constructor() {}
+  constructor(private router: Router) {}
 
   getLocalStorageUserId() {
     return localStorage.getItem('userId')?.toString();
@@ -14,11 +15,23 @@ export class LocalStorageService {
     return localStorage.getItem('apiKey')?.toString();
   }
 
-  setLocalStorageUserId(userId:any){
+  setLocalStorageUserId(userId: any) {
     localStorage.setItem('userId', userId);
   }
-  setLocalStorageApiKey(apikey: string){
+  setLocalStorageApiKey(apikey: string) {
     localStorage.setItem('apiKey', apikey);
   }
 
+  isLogged() {
+    return (
+      this.getLocalStorageApiKey() !== null &&
+      this.getLocalStorageApiKey() !== undefined
+    );
+  }
+
+  logout() {
+    localStorage.removeItem('userId');
+    localStorage.removeItem('apiKey');
+    this.router.navigate(["login"]);
+  }
 }
